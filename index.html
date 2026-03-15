@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Private Vault</title>
+    <style>
+        body { font-family: sans-serif; background: #1a1a1a; color: white; text-align: center; padding: 50px; }
+        .hidden { display: none; }
+        #vault { margin-top: 20px; padding: 20px; border: 2px dashed #444; }
+        input { padding: 10px; border-radius: 5px; border: none; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .gallery img { width: 200px; margin: 10px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen">
+        <h1>🔒 Private Vault</h1>
+        <p>Enter password to view images:</p>
+        <input type="password" id="passwordInput" placeholder="Password">
+        <button onclick="checkPassword()">Unlock</button>
+        <p id="error" style="color: red;"></p>
+    </div>
+
+    <div id="vault" class="hidden">
+        <h2>🔓 Access Granted</h2>
+        <div class="gallery">
+            <img src="https://via.placeholder.com/200" alt="Private Image 1">
+            <img src="https://via.placeholder.com/200" alt="Private Image 2">
+        </div>
+        <br>
+        <button onclick="location.reload()">Lock Folder</button>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const pass = document.getElementById('passwordInput').value;
+            // Set your password here (Note: this is basic protection, not military grade!)
+            if (pass === "1234") {
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('vault').classList.remove('hidden');
+            } else {
+                document.getElementById('error').innerText = "Incorrect Password!";
+            }
+        }
+    </script>
+</body>
+</html>
